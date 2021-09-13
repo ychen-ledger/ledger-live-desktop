@@ -1,11 +1,12 @@
 const { setHeadlessWhen } = require("@codeceptjs/configure");
+const getUserDataPath = require("./playwright/userDataPath");
 
 // turn on headless mode when running with HEADLESS=true environment variable
 // export HEADLESS=true && npx codeceptjs run
 setHeadlessWhen(process.env.HEADLESS);
 
 exports.config = {
-  tests: "playwright/*_test.js",
+  tests: "playwright/codecept/*.test.js",
   output: "./output",
   helpers: {
     Playwright: {
@@ -13,7 +14,7 @@ exports.config = {
       browser: "electron",
       electron: {
         executablePath: require("electron"),
-        args: ["./.webpack/main.bundle.js"],
+        args: ["./.webpack/main.bundle.js", `--user-data-dir=${getUserDataPath()}`],
       },
     },
   },

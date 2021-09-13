@@ -1,19 +1,27 @@
 const { test, expect } = require("@playwright/test");
 const { _electron: electron } = require("playwright");
 
-test("get the app running", async () => {
-  const electronApp = await electron.launch({
+let electronApp;
+
+test.beforeAll(async () => {
+  electronApp = await electron.launch({
     args: ["./.webpack/main.bundle.js"],
   });
+});
 
+test.afterAll(async () => {
+  await electronApp.close();
+});
+
+test("get the app running", async () => {
   console.log("about to check for window");
 
   const window = await electronApp.firstWindow();
-
+  expect(window).not.toBe(undefined);
   const title = await window.title();
   console.log("Page title is: " + title);
 
-  await window.screenshot({ path: "start-of-test.png" });
+  await window.screenshot({ path: "playwright/screenshots/start-of-test.png" });
 
   await window.waitForSelector("#__app__ready__", { state: "attached" });
 
@@ -37,11 +45,8 @@ test("get the app running", async () => {
   );
   await window.click('button:has-text("Check my Nano")');
 
-  await window.screenshot({ path: "end-of-test.png" });
-  // await window.pause();
+  await window.screenshot({ path: "playwright/screenshots/end-of-test.png" });
 
   const connectNanoCTA = await window.isVisible("text=Connect and unlock your device");
   expect(connectNanoCTA).toBe(true);
-  // expect.t
-  await electronApp.close();
 });
