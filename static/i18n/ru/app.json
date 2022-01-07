@@ -191,6 +191,7 @@
     "feesAmount": "Размер комиссии"
   },
   "sidebar": {
+    "card": "Карта",
     "menu": "Меню",
     "stars": "Избранные счета",
     "accounts": "Счета",
@@ -198,7 +199,8 @@
     "exchange": "Купить/Продать",
     "swap": "Обмен",
     "lend": "Кредитование",
-    "catalog": "Исследуйте"
+    "catalog": "Исследуйте",
+    "market": "Рынок"
   },
   "stars": {
     "placeholder": "Выделите счёт, чтобы он отобразился здесь",
@@ -232,7 +234,7 @@
         "label": {
           "provider": "Поставщик",
           "rate": "Курс",
-          "fees": "Комиссия",
+          "fees": "комиссия сети",
           "target": "Целевой счёт"
         },
         "tooltip": {
@@ -702,6 +704,7 @@
     "frozenAssets": "Замороженные активы",
     "bandwidth": "Bandwidth",
     "energy": "Energy",
+    "stake": "Доля",
     "delegatedAssets": "Делегированные активы",
     "undelegating": "Отзыв средств",
     "availableBalanceTooltip": "Это сумма токенов в вашем распоряжении.",
@@ -716,13 +719,20 @@
     "reset": "Сбросить",
     "verifyAddress": "Убедитесь, что показанный адрес в точности совпадает с адресом на экране устройства",
     "buy": {
-      "header": "Покупка криптовалюты через {{provider}}",
-      "title": "Покупка криптовалюты через <0>{{provider}}</0>",
+      "header": "Покупка и продажа криптовалюты",
+      "title": "Выберите поставщика услуг для покупки криптовалюты",
+      "buyFrom": "Все источники",
+      "cryptoSupported": "поддерживаемые криптовалюты",
+      "payWith": "Оплатить картой или SEPA",
       "tab": "Покупка",
-      "selectCrypto": "Выберите криптоактив",
-      "selectAccount": "Выберите счёт",
-      "continue": "Продолжить",
-      "addAccount": "Добавить счёт"
+      "coinify": {
+        "header": "Покупка криптовалюты через {{provider}}",
+        "title": "Покупка криптовалюты через <0>{{provider}}</0>",
+        "selectCrypto": "Выберите криптоактив",
+        "selectAccount": "Выберите счёт",
+        "continue": "Продолжить",
+        "addAccount": "Добавить счёт"
+      }
     },
     "sell": {
       "header": "Продажа криптовалюты через {{provider}}",
@@ -731,11 +741,6 @@
       "selectCrypto": "Выберите криптоактив",
       "selectAccount": "Выберите счёт",
       "continue": "Продолжить"
-    },
-    "history": {
-      "tab": "История",
-      "exporting": "Экспортируем…",
-      "exportOperations": "Экспорт истории"
     }
   },
   "lend": {
@@ -1149,7 +1154,8 @@
     "for": "Адрес <1><0>{{name}}</0></1>",
     "messageIfUnverified": "Убедитесь, что предоставленный адрес в точности совпадает с адресом на экране устройства",
     "messageIfSkipped": "Адрес {{name}} не подверждён на устройстве Ledger. В целях безопасности вам нужно подвердить его.",
-    "showQrCode": "Показать QR-код"
+    "showQrCode": "Показать QR-код",
+    "taprootWarning": "Убедитесь, что у отправителя есть поддержка Taproot"
   },
   "emptyState": {
     "dashboard": {
@@ -1172,6 +1178,75 @@
   },
   "genuinecheck": {
     "deviceInBootloader": "Ваше устройство находится в режиме Bootloader. Щелкните <1>Continue</1> (Продолжить), чтобы обновить его."
+  },
+  "market": {
+    "title": "Рынок",
+    "currency": "Валюта",
+    "rangeLabel": "Время",
+    "goBack": "Назад",
+    "filters": {
+      "title": "Фильтры",
+      "show": "Показать",
+      "all": "Все",
+      "isLedgerCompatible": "Совместима с Ledger Live",
+      "isFavorite": "Избранные счета",
+      "applyFilters": "Применить фильтры",
+      "clearAll": "Очистить все"
+    },
+    "marketList": {
+      "crypto": "Криптовалюты",
+      "price": "Цена",
+      "change": "Изменение",
+      "marketCap": "Рын. капитализация",
+      "last7d": "Последние 7 дней"
+    },
+    "detailsPage": {
+      "priceStatistics": "Статистика цен",
+      "tradingVolume": "Торговый объём",
+      "24hLowHight": "Мин. / Макс. (24 часа)",
+      "7dLowHigh": "Мин. / Макс. (Неделя)",
+      "allTimeHigh": "Исторический макс.",
+      "allTimeLow": "Исторический мин.",
+      "marketCapRank": "Рейтинг по рын. капитализации",
+      "marketCapDominance": "Доминирование на рынке",
+      "supply": "Предложение",
+      "circulatingSupply": "В обороте",
+      "totalSupply": "Общее предложение",
+      "maxSupply": "Макс. эмиссия",
+      "assetNotSupportedOnLedgerLive": "Этот актив не поддерживается Ledger Live.",
+      "supportedCoinsAndTokens": "Поддерживаемые монеты и токены"
+    },
+    "range": {
+      "1H_label": "1Ч",
+      "1D_label": "1Д",
+      "1W_label": "1Н",
+      "1M_label": "1М",
+      "1Y_label": "1Г",
+      "1h": "1ч",
+      "24h": "24ч",
+      "7d": "7дн",
+      "30d": "30дн",
+      "1y": "1г",
+      "1H_selectorLabel": "Последний час",
+      "1D_selectorLabel": "Последние 24 часа",
+      "1W_selectorLabel": "прошлая неделя",
+      "1M_selectorLabel": "Прошлый месяц",
+      "1Y_selectorLabel": "Прошлый год"
+    },
+    "warnings": {
+      "connectionError": "Ошибка соединения",
+      "ledgerUnableToRetrieveData": "Ledger Live не удаётся получить данные.",
+      "checkInternetAndReload": "Проверьте подключение к Интернету и обновите страницу.",
+      "reload": "Обновить",
+      "noCryptosFound": "Монеты не найдены",
+      "noSearchResultsFor": "К сожалению, монеты по запросу <0>{{search}}</0> не найдены. Попробуйте другие поисковые ключи.",
+      "noSearchResults": "К сожалению, нам не удалось ничего найти.",
+      "retrySearchKeyword": "Повторите поиск по другому запросу.",
+      "retrySearchParams": "Повторите поиск с другими параметрами.",
+      "trackFavAssets": "Следите за избранными активами",
+      "clickOnStarIcon": "Нажатие на звёздочку рядом с активом добавить его в избранные.",
+      "browseAssets": "Просмотр активов"
+    }
   },
   "NFT": {
     "viewer": {
@@ -1898,7 +1973,7 @@
             "bullet": {
               "delegate": "Делегированные активы остаются в вашей собственности",
               "access": "Вы сможете разморозить активы через 3 дня.",
-              "ledger": "Заморозьте средства и безопасно голосуйте прямо на устройстве Ledger."
+              "ledger": "Заморозьте средства и безопасно голосуйте прямо на устройстве Ledger"
             },
             "help": "Как работает голосование",
             "termsAndPrivacy": "Делегирование ваших голосов не гарантирует вознаграждений от выбранного Суперпредставителя."
@@ -2476,7 +2551,7 @@
       "steps": {
         "starter": {
           "title": "Зарабатывайте на стейкинге",
-          "description": "Делегируйте счёт Tezos стороннему валидатору, и безопасно получайте вознаграждения за стейкинг, не теряя контроль над активами",
+          "description": "Делегируйте счёт Tezos стороннему валидатору, и безопасно получайте вознаграждения, не теряя контроль над активами",
           "bullet": {
             "delegate": "Делегированные счета остаются в вашей собственности",
             "access": "Вы можете воспользоваться активами в любое время",
@@ -2585,7 +2660,7 @@
       "counterValue": "Предпочтительная валюта",
       "counterValueDesc": "Выберите валюту для отображения состояния счёта и суммы операций.",
       "region": "Страна",
-      "regionDesc": "Выберите страну, чтобы установить часовой пояс Ledger Live.",
+      "regionDesc": "Выберите регион, чтобы обновить форматы дат, времени и валют.",
       "stock": "Индикатор регионального рынка",
       "stockDesc": "Выберите «Западный», чтобы рост рыночной стоимости отображался синим цветом, либо «Восточный», чтобы рост рыночной стоимости отображался красным цветом.",
       "carouselVisibility": "Карусель событий",
@@ -3487,7 +3562,7 @@
     },
     "solana": {
       "memo": "Memo",
-      "memoPlaceholder": "Optional"
+      "memoPlaceholder": "Опционально"
     }
   },
   "errors": {
@@ -3853,6 +3928,9 @@
     "InvalidAddress": {
       "title": "Некорректный адрес {{currencyName}}"
     },
+    "InvalidAddressBecauseAlreadyDelegated": {
+      "title": "Your account is already delegated to this validator"
+    },
     "InvalidAddressBecauseDestinationIsAlsoSource": {
       "title": "Адрес получателя совпадает с адресом отправителя"
     },
@@ -3863,6 +3941,10 @@
     "ETHAddressNonEIP": {
       "title": "Автопроверка недоступна: внимательно проверяйте адрес",
       "description": null
+    },
+    "EthAppNftNotSupported": {
+      "title": "Операция недоступна на этом устройстве",
+      "description": "Функция отправки NFT доступна только в Nano X. Пожалуйста, обратитесь в нашу Поддержку, чтобы узнать, как отправлять NFT с Nano S."
     },
     "CantScanQRCode": {
       "title": "Не удалось сканировать этот QR-код: этот адрес не поддерживает автопроверку."
@@ -4063,13 +4145,13 @@
       "title": "До активации мейннета отправлять монеты на Taproot-адрес небезопасно"
     },
     "SolanaAccountNotFunded": {
-      "title": "Account not funded"
+      "title": "Счёт не пополнен"
     },
     "SolanaMemoIsTooLong": {
-      "title": "Memo is too long. Max length is {{maxLength}}"
+      "title": "Слишком длинное примечание (Memo). Макс. длина {{maxLength}}"
     },
     "SolanaAddressOfEd25519": {
-      "title": "Address off ed25519 curve"
+      "title": "Адрес за пределами кривой ed25519"
     },
     "NotEnoughNftOwned": {
       "title": "Вы превысили кол-во доступных токенов"

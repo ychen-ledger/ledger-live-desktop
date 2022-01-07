@@ -21,6 +21,7 @@ import { centerEllipsis } from "~/renderer/styles/helpers";
 import { useNftMetadata } from "@ledgerhq/live-common/lib/nft/NftMetadataProvider";
 import { space, layout, position } from "styled-system";
 import { openModal } from "~/renderer/actions/modals";
+import { setDrawer } from "~/renderer/drawers/Provider";
 
 const NFTViewerDrawerContainer = styled.div`
   flex: 1;
@@ -106,12 +107,12 @@ function NFTAttribute({
         lineHeight="15.73px"
         fontSize={4}
         color="palette.text.shade60"
-        ff="Inter|Regular"
+        ff="Inter|SemiBold"
       >
         {title}
       </Text>
       <Skeleton show={skeleton} width={120} minHeight={24} barHeight={10}>
-        <Text lineHeight="15.73px" fontSize={4} color="palette.text.shade100" ff="Inter|SemiBold">
+        <Text lineHeight="15.73px" fontSize={4} color="palette.text.shade100" ff="Inter|Regular">
           <Pre>{value}</Pre>
         </Text>
       </Skeleton>
@@ -144,6 +145,7 @@ export function NFTViewerDrawer({
   const name = centerEllipsis(metadata?.nftName || nft.tokenId, 26);
 
   const onNFTSend = useCallback(() => {
+    setDrawer();
     dispatch(openModal("MODAL_SEND", { account, isNFTSend: true, nftId }));
   }, [dispatch, nftId, account]);
 
@@ -157,11 +159,10 @@ export function NFTViewerDrawer({
               fontSize={5}
               lineHeight="18px"
               color="palette.text.shade50"
-              uppercase
               pb={2}
             >
               <Skeleton show={show} width={100} barHeight={10} minHeight={24}>
-                {metadata?.tokenName || nft?.collection?.contract}
+                {metadata?.tokenName || "-"}
               </Skeleton>
             </Text>
             <Text
@@ -211,7 +212,7 @@ export function NFTViewerDrawer({
               lineHeight="15.73px"
               fontSize={4}
               color="palette.text.shade60"
-              fontWeight="400"
+              fontWeight="600"
             >
               {t("NFT.viewer.attributes.tokenAddress")}
             </Text>
@@ -224,7 +225,7 @@ export function NFTViewerDrawer({
               lineHeight="15.73px"
               fontSize={4}
               color="palette.text.shade60"
-              fontWeight="400"
+              fontWeight="600"
             >
               {t("NFT.viewer.attributes.tokenId")}
             </Text>
